@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Уеб Магия: HTML и JavaScript за 5. клас</title>
+    <!-- Зареждане на Tailwind CSS за модерен и адаптивен дизайн -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter и Fira Code за красив шрифт на кода -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        code, pre {
+            font-family: 'Fira Code', monospace;
+        }
+        /* Скриване на скролбара за хоризонталната навигация на мобилни устройства */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        /* Анимация за зарчето */
+        @keyframes bounceRoll {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            50% { transform: scale(1.2) rotate(15deg); }
+        }
+        .roll-anim {
+            animation: bounceRoll 0.3s ease-in-out;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased selection:bg-indigo-200 selection:text-indigo-900">
+
+    <!-- Горен навигационен панел и заглавие -->
+    <header class="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-500 text-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-5xl mx-auto px-4 py-4">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+                <div class="flex items-center gap-3">
+                    <span class="text-3xl bg-white/20 p-2 rounded-2xl shadow-inner">🚀</span>
+                    <div>
+                        <h1 class="text-xl sm:text-2xl font-extrabold tracking-tight">Уеб Магия за 5. клас</h1>
+                        <p class="text-xs sm:text-sm text-indigo-100 font-medium">Интерактивен наръчник по HTML и JavaScript</p>
+                    </div>
+                </div>
+                
+                <!-- Индикатор за напредъка на ученика -->
+                <div class="bg-white/15 backdrop-blur-sm px-4 py-2 rounded-2xl flex items-center gap-3 border border-white/20">
+                    <div class="text-xs font-semibold uppercase tracking-wider text-indigo-100">Твоят напредък:</div>
+                    <div class="flex items-center gap-2">
+                        <div class="w-24 sm:w-32 bg-black/25 rounded-full h-2.5 overflow-hidden">
+                            <div id="progress-bar" class="bg-emerald-400 h-2.5 rounded-full transition-all duration-500" style="width: 0%"></div>
+                        </div>
+                        <span id="progress-text" class="text-sm font-bold text-white">0/5</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Бързи бутони за прескачане към уроците -->
+            <nav class="flex gap-2 overflow-x-auto no-scrollbar pt-3 mt-3 border-t border-white/15 text-xs sm:text-sm font-semibold">
+                <a href="#helper" class="shrink-0 bg-amber-400 text-slate-900 hover:bg-amber-300 px-3 py-1.5 rounded-xl transition shadow-sm">🛠️ Помощник</a>
+                <a href="#lesson1" class="shrink-0 bg-white/15 hover:bg-white/25 px-3 py-1.5 rounded-xl transition">1. HTML Основи</a>
+                <a href="#lesson2" class="shrink-0 bg-white/15 hover:bg-white/25 px-3 py-1.5 rounded-xl transition">2. Цветове и JS</a>
+                <a href="#lesson3" class="shrink-0 bg-white/15 hover:bg-white/25 px-3 py-1.5 rounded-xl transition">3. Променливи и Време</a>
+                <a href="#lesson4" class="shrink-0 bg-white/15 hover:bg-white/25 px-3 py-1.5 rounded-xl transition">4. Диалог и Калкулатор</a>
+                <a href="#lesson5" class="shrink-0 bg-white/15 hover:bg-white/25 px-3 py-1.5 rounded-xl transition">5. Случайни числа</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Основно съдържание -->
+    <main class="max-w-5xl mx-auto px-4 py-8 space-y-10">
+
+        <!-- БЪРЗ ПОМОЩНИК ЗА РАБОТА В ЧАС -->
+        <section id="helper" class="bg-amber-50 border-2 border-amber-300 rounded-3xl p-6 shadow-sm scroll-mt-32">
+            <div class="flex items-center gap-3 mb-4">
+                <span class="text-3xl">🛠️</span>
+                <div>
+                    <h2 class="text-xl font-extrabold text-amber-900">Помощник за работа в час (Notepad + Браузър)</h2>
+                    <p class="text-sm text-amber-800">Златните правила на програмиста в 5. клас:</p>
+                </div>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div class="bg-white p-4 rounded-2xl border border-amber-200 shadow-sm">
+                    <div class="text-lg font-bold text-indigo-600 mb-1">1. Запазване 💾</div>
+                    <p class="text-sm text-slate-600">В Notepad натисни <kbd class="bg-slate-100 border border-slate-300 px-1.5 py-0.5 rounded font-bold text-slate-800">Ctrl + S</kbd>. Винаги завършвай името с <code class="text-pink-600 font-bold">.html</code> (напр. <code class="text-slate-800">sait.html</code>).</p>
+                </div>
+                <div class="bg-white p-4 rounded-2xl border border-amber-200 shadow-sm">
+                    <div class="text-lg font-bold text-emerald-600 mb-1">2. Презареждане 🔄</div>
+                    <p class="text-sm text-slate-600">След всяка промяна в кода първо запази файла, после отиди в браузъра и натисни <kbd class="bg-slate-100 border border-slate-300 px-1.5 py-0.5 rounded font-bold text-slate-800">F5</kbd>.</p>
+                </div>
+                <div class="bg-white p-4 rounded-2xl border border-amber-200 shadow-sm">
+                    <div class="text-lg font-bold text-purple-600 mb-1">3. Емоджита 😍</div>
+                    <p class="text-sm text-slate-600">Натисни клавиша <kbd class="bg-slate-100 border border-slate-300 px-1.5 py-0.5 rounded font-bold text-slate-800">Win + .</kbd> (точка), за да избереш сърчица, зарчета и картинки.</p>
+                </div>
+                <div class="bg-white p-4 rounded-2xl border border-amber-200 shadow-sm">
+                    <div class="text-lg font-bold text-rose-600 mb-1">4. Детектив 🕵️‍♂️</div>
+                    <p class="text-sm text-slate-600">Ако нещо не работи, натисни <kbd class="bg-slate-100 border border-slate-300 px-1.5 py-0.5 rounded font-bold text-slate-800">F12</kbd> в браузъра и виж раздела <b>Console</b> за червени грешки.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================================= -->
+        <!-- УРОК 1: ОСНОВИ НА HTML -->
+        <!-- ========================================================= -->
+        <article id="lesson1" class="bg-white rounded-3xl shadow-md border border-slate-200 overflow-hidden scroll-mt-32">
+            <div class="bg-sky-500 text-white px-6 py-4 flex flex-wrap items-center justify-between gap-4">
+                <div class="flex items-center gap-3">
+                    <span class="bg-white text-sky-600 font-black w-9 h-9 rounded-xl flex items-center justify-center text-lg shadow">1</span>
+                    <h2 class="text-xl sm:text-2xl font-extrabold">Основи на HTML (Скелетът на сайта)</h2>
+                </div>
+                <label class="flex items-center gap-2 bg-sky-700/50 hover:bg-sky-700/70 px-3 py-1.5 rounded-xl cursor-pointer transition select-none">
+                    <input type="checkbox" class="lesson-check w-4 h-4 accent-emerald-400 rounded" data-lesson="1">
+                    <span class="text-sm font-bold">Научих този урок! ✅</span>
+                </label>
+            </div>
+
+            <div class="p-6 space-y-6">
+                <p class="text-slate-700 leading-relaxed">
+                    <b>HTML</b> е езикът, с който изграждаме съдържанието на страницата – заглавия, параграфи и списъци. Всичко, което се вижда на екрана, се пише вътре в тага <code class="bg-slate-100 text-pink-600 px-1.5 py-0.5 rounded font-semibold">&lt;body&gt;</code>.
+                </p>
+
+                <!-- Таблица с основните тагове -->
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 text-sm">
+                    <div class="bg-sky-50 p-3 rounded-2xl border border-sky-100">
+                        <code class="text-sky-700 font-bold">&lt;h1&gt; ... &lt;/h1&gt;</code>
+                        <p class="text-slate-600 mt-1">Най-голямото заглавие (има до <code>&lt;h6&gt;</code>).</p>
+                    </div>
+                    <div class="bg-sky-50 p-3 rounded-2xl border border-sky-100">
+                        <code class="text-sky-700 font-bold">&lt;p&gt; ... &lt;/p&gt;</code>
+                        <p class="text-slate-600 mt-1">Параграф с обикновен текст.</p>
+                    </div>
+                    <div class="bg-sky-50 p-3 rounded-2xl border border-sky-100">
+                        <code class="text-sky-700 font-bold">&lt;ul&gt; и &lt;li&gt;</code>
+                        <p class="text-slate-600 mt-1">Списък с точки (<code>&lt;li&gt;</code> е всеки ред).</p>
+                    </div>
+                    <div class="bg-sky-50 p-3 rounded-2xl border border-sky-100">
+                        <code class="text-sky-700 font-bold">&lt;hr&gt;</code>
+                        <p class="text-slate-600 mt-1">Хоризонтална разделителна линия.</p>
+                    </div>
+                    <div class="bg-sky-50 p-3 rounded-2xl border border-sky-100 col-span-2">
+                        <code class="text-sky-700 font-bold">&lt;body style="background-color: lightblue;"&gt;</code>
+                        <p class="text-slate-600 mt-1">Задава начален цвят на фона на цялата страница.</p>
+                    </div>
+                </div>
+
+                <!-- Код и Преглед на живо -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <!-- Код -->
+                    <div class="flex flex-col">
+                        <div class="flex items-center justify-between bg-slate-800 text-slate-200 px-4 py-2 rounded-t-2xl text-xs font-semibold">
+                            <span>📄 Примерен HTML код</span>
+                            <button onclick="copyCode('code-l1', this)" class="bg-indigo-500 hover:bg-indigo-400 text-white px-3 py-1 rounded-lg transition font-bold">Копирай кода 📋</button>
+                        </div>
+                        <pre id="code-l1" class="bg-slate-900 text-emerald-300 p-4 rounded-b-2xl text-xs sm:text-sm overflow-x-auto flex-1 leading-relaxed">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;body style="background-color: lightyellow;"&gt;
+
+  &lt;h1&gt;Добре дошли в моя сайт!&lt;/h1&gt;
+  &lt;p&gt;Аз съм ученик в 5. клас и уча програмиране.&lt;/p&gt;
+  &lt;hr&gt;
+  &lt;h3&gt;Моите любими неща:&lt;/h3&gt;
+  &lt;ul&gt;
+    &lt;li&gt;Компютърни игри 🎮&lt;/li&gt;
+    &lt;li&gt;Пица 🍕&lt;/li&gt;
+    &lt;li&gt;Програмиране 💻&lt;/li&gt;
+  &lt;/ul&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+                    </div>
+
+                    <!-- Интерактивно демо -->
+                    <div class="flex flex-col">
+                        <div class="bg-sky-100 text-sky-900 px-4 py-2 rounded-t-2xl text-xs font-bold flex items-center justify-between">
+                            <span>👀 Как изглежда в браузъра:</span>
+                            <span class="text-sky-700">На живо</span>
+                        </div>
+                        <div class="border-2 border-sky-100 rounded-b-2xl p-5 flex-1 shadow-inner" style="background-color: lightyellow;">
+                            <h1 class="text-2xl font-bold text-slate-900 mb-2">Добре дошли в моя сайт!</h1>
+                            <p class="text-slate-800 mb-3">Аз съм ученик в 5. клас и уча програмиране.</p>
+                            <hr class="border-slate-400 my-3">
+                            <h3 class="text-lg font-bold text-slate-900 mb-2">Моите любими неща:</h3>
+                            <ul class="list-disc list-inside text-slate-800 space-y-1">
+                                <li>Компютърни игри 🎮</li>
+                                <li>Пица 🍕</li>
+                                <li>Програмиране 💻</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <!-- ========================================================= -->
+        <!-- УРОК 2: ЦВЕТНИ БУТОНИ, ПАЛИТРА И НОЩЕН РЕЖИМ -->
+        <!-- ========================================================= -->
+        <article id="lesson2" class="bg-white rounded-3xl shadow-md border border-slate-200 overflow-hidden scroll-mt-32">
+            <div class="bg-pink-500 text-white px-6 py-4 flex flex-wrap items-center justify-between gap-4">
+                <div class="flex items-center gap-3">
+                    <span class="bg-white text-pink-600 font-black w-9 h-9 rounded-xl flex items-center justify-center text-lg shadow">2</span>
+                    <h2 class="text-xl sm:text-2xl font-extrabold">JavaScript Магия: Цветни бутони и Палитра</h2>
+                </div>
+                <label class="flex items-center gap-2 bg-pink-700/50 hover:bg-pink-700/70 px-3 py-1.5 rounded-xl cursor-pointer transition select-none">
+                    <input type="checkbox" class="lesson-check w-4 h-4 accent-emerald-400 rounded" data-lesson="2">
+                    <span class="text-sm font-bold">Научих този урок! ✅</span>
+                </label>
+            </div>
+
+            <div class="p-6 space-y-6">
+                <p class="text-slate-700 leading-relaxed">
+                    С <b>JavaScript</b> караме сайта да реагира, когато кликнем върху бутон (<code class="bg-slate-100 text-pink-600 px-1.5 py-0.5 rounded font-semibold">onclick</code>). Можем да сменяме цвета на фона, да добавим истинска палитра (<code class="bg-slate-100 text-pink-600 px-1.5 py-0.5 rounded font-semibold">&lt;input type="color"&gt;</code>) и да направим Нощен режим!
+                </p>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <!-- Код -->
+                    <div class="flex flex-col">
+                        <div class="flex items-center justify-between bg-slate-800 text-slate-200 px-4 py-2 rounded-t-2xl text-xs font-semibold">
+                            <span>📄 Код за бутони, палитра и нощен режим</span>
+                            <button onclick="copyCode('code-l2', this)" class="bg-indigo-500 hover:bg-indigo-400 text-white px-3 py-1 rounded-lg transition font-bold">Копирай кода 📋</button>
+                        </div>
+                        <pre id="code-l2" class="bg-slate-900 text-emerald-300 p-4 rounded-b-2xl text-xs sm:text-sm overflow-x-auto flex-1 leading-relaxed">&lt;h3&gt;Смени фона със сърчице:&lt;/h3&gt;
+&lt;button onclick="document.body.style.backgroundColor = 'lightblue'"&gt;💙 Син&lt;/button&gt;
+&lt;button onclick="document.body.style.backgroundColor = 'pink'"&gt;🩷 Розов&lt;/button&gt;
+&lt;button onclick="document.body.style.backgroundColor = 'lightgreen'"&gt;💚 Зелен&lt;/button&gt;
+
+&lt;h3&gt;Избери цвят от палитрата:&lt;/h3&gt;
+&lt;input type="color" onchange="document.body.style.backgroundColor = this.value"&gt;
+
+&lt;h3&gt;Режим на страницата:&lt;/h3&gt;
+&lt;button onclick="document.body.style.backgroundColor = 'black'; document.body.style.color = 'white';"&gt;
+  Нощен режим 🌙
+&lt;/button&gt;
+&lt;button onclick="document.body.style.backgroundColor = 'white'; document.body.style.color = 'black';"&gt;
+  Дневен режим ☀️
+&lt;/button&gt;</pre>
+                    </div>
+
+                    <!-- Интерактивно демо -->
+                    <div class="flex flex-col">
+                        <div class="bg-pink-100 text-pink-900 px-4 py-2 rounded-t-2xl text-xs font-bold flex items-center justify-between">
+                            <span>🎮 Изпробвай сам тук:</span>
+                            <span class="text-pink-700">Тестова кутия</span>
+                        </div>
+                        <div id="demo-l2-box" class="border-2 border-pink-100 rounded-b-2xl p-5 flex-1 transition-colors duration-300 bg-white text-slate-900 space-y-4">
+                            <div>
+                                <p class="text-sm font-bold mb-2">1. Кликни на сърчице:</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <button onclick="setDemoL2Bg('lightblue')" class="bg-slate-100 hover:bg-slate-200 text-slate-900 border border-slate-300 px-3 py-1.5 rounded-xl text-sm font-semibold shadow-sm active:scale-95 transition">💙 Син</button>
+                                    <button onclick="setDemoL2Bg('pink')" class="bg-slate-100 hover:bg-slate-200 text-slate-900 border border-slate-300 px-3 py-1.5 rounded-xl text-sm font-semibold shadow-sm active:scale-95 transition">🩷 Розов</button>
+                                    <button onclick="setDemoL2Bg('lightgreen')" class="bg-slate-100 hover:bg-slate-200 text-slate-900 border border-slate-300 px-3 py-1.5 rounded-xl text-sm font-semibold shadow-sm active:scale-95 transition">💚 Зелен</button>
+                                </div>
+                            </div>
+
+                            <div>
+                                <p class="text-sm font-bold mb-2">2. Отвори палитрата:</p>
+                                <div class="flex items-center gap-3">
+                                    <input type="color" value="#a855f7" onchange="setDemoL2Bg(this.value)" class="w-12 h-10 rounded-lg cursor-pointer border border-slate-300">
+                                    <span class="text-xs opacity-80">👈 Кликни цветното квадратче!</span>
+                                </div>
+                            </div>
+
+                            <div>
+                                <p class="text-sm font-bold mb-2">3. Нощен / Дневен режим:</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <button onclick="setDemoL2Theme('black', 'white')" class="bg-slate-800 hover:bg-slate-700 text-white px-3 py-1.5 rounded-xl text-sm font-semibold shadow-sm active:scale-95 transition">Нощен режим 🌙</button>
+                                    <button onclick="setDemoL2Theme('white', 'black')" class="bg-amber-200 hover:bg-amber-300 text-slate-900 px-3 py-1.5 rounded-xl text-sm font-semibold shadow-sm active:scale-95 transition">Дневен режим ☀️</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <!-- ========================================================= -->
+        <!-- УРОК 3: ПРОМЕНЛИВИ, БРОЯЧ И ВРЕМЕ -->
+        <!-- ========================================================= -->
+        <article id="lesson3" class="bg-white rounded-3xl shadow-md border border-slate-200 overflow-hidden scroll-mt-32">
+            <div class="bg-indigo-600 text-white px-6 py-4 flex flex-wrap items-center justify-between gap-4">
+                <div class="flex items-center gap-3">
+                    <span class="bg-white text-indigo-600 font-black w-9 h-9 rounded-xl flex items-center justify-center text-lg shadow">3</span>
+                    <h2 class="text-xl sm:text-2xl font-extrabold">Променливи, Брояч и Измерване на време</h2>
+                </div>
+                <label class="flex items-center gap-2 bg-indigo-800/50 hover:bg-indigo-800/70 px-3 py-1.5 rounded-xl cursor-pointer transition select-none">
+                    <input type="checkbox" class="lesson-check w-4 h-4 accent-emerald-400 rounded" data-lesson="3">
+                    <span class="text-sm font-bold">Научих този урок! ✅</span>
+                </label>
+            </div>
+
+            <div class="p-6 space-y-6">
+                <div class="bg-indigo-50 border border-indigo-200 p-4 rounded-2xl flex items-start gap-3">
+                    <span class="text-2xl">📦</span>
+                    <p class="text-sm sm:text-base text-indigo-950">
+                        <b>Какво е променлива (<code class="text-indigo-700 font-bold">let</code>)?</b> Представи си кутийка с етикет (име), в която компютърът пази число или текст. Например <code class="bg-white px-1.5 py-0.5 rounded font-bold text-indigo-700">let tochki = 0;</code> създава кутийка с име <i>tochki</i> и слага числото 0 вътре.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <!-- Код -->
+                    <div class="flex flex-col">
+                        <div class="flex items-center justify-between bg-slate-800 text-slate-200 px-4 py-2 rounded-t-2xl text-xs font-semibold">
+                            <span>📄 Код за Брояч и Хронометър</span>
+                            <button onclick="copyCode('code-l3', this)" class="bg-indigo-500 hover:bg-indigo-400 text-white px-3 py-1 rounded-lg transition font-bold">Копирай кода 📋</button>
+                        </div>
+                        <pre id="code-l3" class="bg-slate-900 text-emerald-300 p-4 rounded-b-2xl text-xs sm:text-sm overflow-x-auto flex-1 leading-relaxed">&lt;!-- 1. БРОЯЧ НА КЛИКАНИЯ --&gt;
+&lt;p&gt;Брой кликания: &lt;span id="broya"&gt;0&lt;/span&gt;&lt;/p&gt;
+&lt;script&gt; let tochki = 0; &lt;/script&gt;
+&lt;button onclick="tochki = tochki + 1; document.getElementById('broya').innerHTML = tochki;"&gt;
+  Цъкни ме! 🚀
+&lt;/button&gt;
+
+&lt;!-- 2. ХРОНОМЕТЪР (УЦЕЛИ 3 СЕКУНДИ) --&gt;
+&lt;p&gt;Резултат: &lt;span id="vreme"&gt;0&lt;/span&gt; сек.&lt;/p&gt;
+&lt;script&gt; let nachalo = 0; &lt;/script&gt;
+&lt;button onclick="nachalo = Date.now();"&gt;1. Старт 🚀&lt;/button&gt;
+&lt;button onclick="let kray = Date.now(); document.getElementById('vreme').innerHTML = (kray - nachalo) / 1000;"&gt;2. Стоп 🛑&lt;/button&gt;</pre>
+                    </div>
+
+                    <!-- Интерактивно демо -->
+                    <div class="flex flex-col">
+                        <div class="bg-indigo-100 text-indigo-900 px-4 py-2 rounded-t-2xl text-xs font-bold flex items-center justify-between">
+                            <span>🎮 Мини-игри на живо:</span>
+                            <span class="text-indigo-700">Изпробвай!</span>
+                        </div>
+                        <div class="border-2 border-indigo-100 rounded-b-2xl p-5 flex-1 bg-slate-50 space-y-5">
+                            <!-- Игра 1: Кликер -->
+                            <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm">
+                                <div class="flex items-center justify-between mb-2">
+                                    <span class="font-bold text-slate-800">Игра 1: Бързи пръсти</span>
+                                    <span class="text-xs bg-indigo-100 text-indigo-700 font-bold px-2 py-0.5 rounded-lg">let tochki</span>
+                                </div>
+                                <p class="text-sm text-slate-600 mb-3">Брой кликания: <strong id="demo-clicks" class="text-2xl text-indigo-600">0</strong></p>
+                                <div class="flex gap-2">
+                                    <button onclick="demoAddClick()" class="bg-indigo-600 hover:bg-indigo-500 text-white px-4 py-2 rounded-xl font-bold text-sm shadow active:scale-95 transition">Цъкни ме! 🚀</button>
+                                    <button onclick="demoResetClick()" class="bg-slate-200 hover:bg-slate-300 text-slate-700 px-3 py-2 rounded-xl font-semibold text-xs transition">Нулирай</button>
+                                </div>
+                            </div>
+
+                            <!-- Игра 2: 3 секунди -->
+                            <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm">
+                                <div class="flex items-center justify-between mb-2">
+                                    <span class="font-bold text-slate-800">Игра 2: Уцели точно 3.0 сек!</span>
+                                    <span class="text-xs bg-purple-100 text-purple-700 font-bold px-2 py-0.5 rounded-lg">Date.now()</span>
+                                </div>
+                                <p class="text-sm text-slate-600 mb-3">Резултат: <strong id="demo-time" class="text-2xl text-purple-600">0.00</strong> сек. <span id="demo-time-status" class="text-xs font-bold text-amber-600 ml-1"></span></p>
+                                <div class="flex gap-2">
+                                    <button onclick="demoStartTime()" class="bg-emerald-600 hover:bg-emerald-500 text-white px-4 py-2 rounded-xl font-bold text-sm shadow active:scale-95 transition">1. Старт 🚀</button>
+                                    <button onclick="demoStopTime()" class="bg-rose-600 hover:bg-rose-500 text-white px-4 py-2 rounded-xl font-bold text-sm shadow active:scale-95 transition">2. Стоп 🛑</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <!-- ========================================================= -->
+        <!-- УРОК 4: ДИАЛОГ С ПОТРЕБИТЕЛЯ И ЕКИПЕН КАЛКУЛАТОР -->
+        <!-- ========================================================= -->
+        <article id="lesson4" class="bg-white rounded-3xl shadow-md border border-slate-200 overflow-hidden scroll-mt-32">
+            <div class="bg-emerald-600 text-white px-6 py-4 flex flex-wrap items-center justify-between gap-4">
+                <div class="flex items-center gap-3">
+                    <span class="bg-white text-emerald-600 font-black w-9 h-9 rounded-xl flex items-center justify-center text-lg shadow">4</span>
+                    <h2 class="text-xl sm:text-2xl font-extrabold">Диалог с потребителя и Екипен Калкулатор</h2>
+                </div>
+                <label class="flex items-center gap-2 bg-emerald-800/50 hover:bg-emerald-800/70 px-3 py-1.5 rounded-xl cursor-pointer transition select-none">
+                    <input type="checkbox" class="lesson-check w-4 h-4 accent-amber-300 rounded" data-lesson="4">
+                    <span class="text-sm font-bold">Научих този урок! ✅</span>
+                </label>
+            </div>
+
+            <div class="p-6 space-y-6">
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-sm">
+                    <div class="bg-emerald-50 p-3 rounded-2xl border border-emerald-200">
+                        <code class="text-emerald-800 font-bold">prompt('Въпрос')</code>
+                        <p class="text-slate-600 mt-1">Отваря прозорче, в което потребителят пише отговор.</p>
+                    </div>
+                    <div class="bg-emerald-50 p-3 rounded-2xl border border-emerald-200">
+                        <code class="text-emerald-800 font-bold">Number(...)</code>
+                        <p class="text-slate-600 mt-1">Вълшебна преса, която превръща текста в истинско число за събиране.</p>
+                    </div>
+                    <div class="bg-emerald-50 p-3 rounded-2xl border border-emerald-200">
+                        <code class="text-emerald-800 font-bold">innerHTML = sbor</code>
+                        <p class="text-slate-600 mt-1">Изписва готовия резултат директно вътре в сайта.</p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <!-- Код -->
+                    <div class="flex flex-col">
+                        <div class="flex items-center justify-between bg-slate-800 text-slate-200 px-4 py-2 rounded-t-2xl text-xs font-semibold">
+                            <span>📄 Код за Екипен Калкулатор (Шофьор и Навигатор)</span>
+                            <button onclick="copyCode('code-l4', this)" class="bg-indigo-500 hover:bg-indigo-400 text-white px-3 py-1 rounded-lg transition font-bold">Копирай кода 📋</button>
+                        </div>
+                        <pre id="code-l4" class="bg-slate-900 text-emerald-300 p-4 rounded-b-2xl text-xs sm:text-sm overflow-x-auto flex-1 leading-relaxed">&lt;h3&gt;🧮 Екипен Калкулатор&lt;/h3&gt;
+
+&lt;p&gt;Резултатът от събирането е: 
+  &lt;strong id="rezultat" style="color: blue; font-size: 20px;"&gt;0&lt;/strong&gt;
+&lt;/p&gt;
+
+&lt;button onclick="
+  let chislo1 = Number(prompt('Шофьор, въведи първото число:'));
+  let chislo2 = Number(prompt('Навигатор, въведи второто число:'));
+  let sbor = chislo1 + chislo2;
+  document.getElementById('rezultat').innerHTML = sbor;
+"&gt;
+  Пресметни заедно! 🚀
+&lt;/button&gt;</pre>
+                    </div>
+
+                    <!-- Интерактивен симулатор (работи безпроблемно навсякъде без блокиране на popups) -->
+                    <div class="flex flex-col">
+                        <div class="bg-emerald-100 text-emerald-900 px-4 py-2 rounded-t-2xl text-xs font-bold flex items-center justify-between">
+                            <span>🧮 Симулатор на калкулатора:</span>
+                            <span class="text-emerald-700">Тествай събирането</span>
+                        </div>
+                        <div class="border-2 border-emerald-100 rounded-b-2xl p-5 flex-1 bg-slate-50 flex flex-col justify-between space-y-4">
+                            <div class="space-y-3">
+                                <div>
+                                    <label class="block text-xs font-bold text-slate-700 mb-1">1. Шофьор, въведи първото число (<code class="text-emerald-700">chislo1</code>):</label>
+                                    <input type="number" id="sim-num1" value="12" class="w-full px-3 py-2 rounded-xl border border-slate-300 bg-white font-bold text-slate-800 focus:outline-none focus:border-emerald-500">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-bold text-slate-700 mb-1">2. Навигатор, въведи второто число (<code class="text-emerald-700">chislo2</code>):</label>
+                                    <input type="number" id="sim-num2" value="8" class="w-full px-3 py-2 rounded-xl border border-slate-300 bg-white font-bold text-slate-800 focus:outline-none focus:border-emerald-500">
+                                </div>
+                            </div>
+
+                            <div class="bg-white p-4 rounded-2xl border border-emerald-200 flex items-center justify-between">
+                                <button onclick="simCalculate()" class="bg-emerald-600 hover:bg-emerald-500 text-white px-4 py-2.5 rounded-xl font-bold text-sm shadow active:scale-95 transition">
+                                    Пресметни заедно! 🚀
+                                </button>
+                                <div class="text-right">
+                                    <div class="text-xs text-slate-500 font-semibold">Резултат (<code class="text-blue-600">sbor</code>):</div>
+                                    <div id="sim-calc-result" class="text-3xl font-black text-blue-600">20</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <!-- ========================================================= -->
+        <!-- УРОК 5: СЛУЧАЙНИ ЧИСЛА (MATH.RANDOM) -->
+        <!-- ========================================================= -->
+        <article id="lesson5" class="bg-white rounded-3xl shadow-md border border-slate-200 overflow-hidden scroll-mt-32">
+            <div class="bg-amber-500 text-white px-6 py-4 flex flex-wrap items-center justify-between gap-4">
+                <div class="flex items-center gap-3">
+                    <span class="bg-white text-amber-600 font-black w-9 h-9 rounded-xl flex items-center justify-center text-lg shadow">5</span>
+                    <h2 class="text-xl sm:text-2xl font-extrabold">Случайни числа (Вълшебно зарче и Късмет)</h2>
+                </div>
+                <label class="flex items-center gap-2 bg-amber-700/50 hover:bg-amber-700/70 px-3 py-1.5 rounded-xl cursor-pointer transition select-none">
+                    <input type="checkbox" class="lesson-check w-4 h-4 accent-emerald-400 rounded" data-lesson="5">
+                    <span class="text-sm font-bold">Научих този урок! ✅</span>
+                </label>
+            </div>
+
+            <div class="p-6 space-y-6">
+                <p class="text-slate-700 leading-relaxed">
+                    С <code class="bg-slate-100 text-amber-700 px-1.5 py-0.5 rounded font-bold">Math.random()</code> компютърът си намисля случайно число. Когато го комбинираме с <code class="bg-slate-100 text-amber-700 px-1.5 py-0.5 rounded font-bold">Math.floor(...)</code> (за закръгляне), можем да направим зарче от 1 до 6, генератор на бонус точки или случаен цвят!
+                </p>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <!-- Код -->
+                    <div class="flex flex-col">
+                        <div class="flex items-center justify-between bg-slate-800 text-slate-200 px-4 py-2 rounded-t-2xl text-xs font-semibold">
+                            <span>📄 Код за Зарче и Случаен цвят</span>
+                            <button onclick="copyCode('code-l5', this)" class="bg-indigo-500 hover:bg-indigo-400 text-white px-3 py-1 rounded-lg transition font-bold">Копирай кода 📋</button>
+                        </div>
+                        <pre id="code-l5" class="bg-slate-900 text-emerald-300 p-4 rounded-b-2xl text-xs sm:text-sm overflow-x-auto flex-1 leading-relaxed">&lt;!-- 1. ВЪЛШЕБНО ЗАРЧЕ (от 1 до 6) --&gt;
+&lt;p&gt;Падна се число: &lt;span id="rezultatZar" style="font-size: 35px; color: red;"&gt;?&lt;/span&gt;&lt;/p&gt;
+&lt;button onclick="
+  let zarche = Math.floor(Math.random() * 6) + 1;
+  document.getElementById('rezultatZar').innerHTML = zarche;
+"&gt;
+  Хвърли зарчето! 🎲
+&lt;/button&gt;
+
+&lt;!-- 2. СЛУЧАЕН ЦВЯТ ОТ СПИСЪК --&gt;
+&lt;button onclick="
+  let cvetove = ['pink', 'lightblue', 'lightgreen', 'orange', 'gold'];
+  let r = Math.floor(Math.random() * cvetove.length);
+  document.body.style.backgroundColor = cvetove[r];
+"&gt;
+  Случаен цвят! 🌈
+&lt;/button&gt;</pre>
+                    </div>
+
+                    <!-- Интерактивно демо -->
+                    <div class="flex flex-col">
+                        <div class="bg-amber-100 text-amber-900 px-4 py-2 rounded-t-2xl text-xs font-bold flex items-center justify-between">
+                            <span>🎲 Изпробвай късмета си:</span>
+                            <span class="text-amber-700">На живо</span>
+                        </div>
+                        <div id="demo-l5-box" class="border-2 border-amber-100 rounded-b-2xl p-5 flex-1 bg-slate-50 transition-colors duration-300 space-y-4">
+                            <!-- Зарче -->
+                            <div class="bg-white/90 p-4 rounded-2xl border border-slate-200 shadow-sm flex items-center justify-between">
+                                <div>
+                                    <div class="font-bold text-slate-800">Вълшебно зарче (1–6)</div>
+                                    <button onclick="demoRollDice()" class="mt-2 bg-rose-600 hover:bg-rose-500 text-white px-4 py-2 rounded-xl font-bold text-sm shadow active:scale-95 transition">
+                                        Хвърли зарчето! 🎲
+                                    </button>
+                                </div>
+                                <div id="demo-dice-val" class="w-16 h-16 bg-rose-50 border-2 border-rose-200 rounded-2xl flex items-center justify-center text-4xl font-black text-rose-600 shadow-inner">
+                                    ?
+                                </div>
+                            </div>
+
+                            <!-- Бонус точки и случаен цвят -->
+                            <div class="bg-white/90 p-4 rounded-2xl border border-slate-200 shadow-sm space-y-3">
+                                <div class="flex items-center justify-between">
+                                    <span class="text-sm font-bold text-slate-800">Бонус точки (1–100):</span>
+                                    <strong id="demo-bonus-val" class="text-2xl font-black text-indigo-600">0</strong>
+                                </div>
+                                <div class="flex flex-wrap gap-2">
+                                    <button onclick="demoBonusPoints()" class="bg-indigo-600 hover:bg-indigo-500 text-white px-3 py-2 rounded-xl font-bold text-xs shadow active:scale-95 transition">
+                                        Спечели точки! 🎯
+                                    </button>
+                                    <button onclick="demoRandomColor()" class="bg-amber-500 hover:bg-amber-400 text-white px-3 py-2 rounded-xl font-bold text-xs shadow active:scale-95 transition">
+                                        Случаен цвят на кутията! 🌈
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+    </main>
+
+    <!-- Футър -->
+    <footer class="max-w-5xl mx-auto px-4 py-8 text-center text-slate-500 text-sm">
+        <p class="font-semibold">Създадено за малките уеб разработчици от 5. клас 💻✨</p>
+        <p class="text-xs mt-1">Съвет: Продължавай да експериментираш с цветовете и числата в Notepad!</p>
+    </footer>
+
+    <!-- JavaScript логика за интерактивните примери, копиране и запазване на напредъка -->
+    <script>
+        // 1. Функция за копиране на код в клипборда
+        function copyCode(elementId, buttonElement) {
+            const codeElement = document.getElementById(elementId);
+            const textToCopy = codeElement.innerText;
+
+            // Създаване на временно текстово поле за сигурно копиране
+            const tempTextArea = document.createElement('textarea');
+            tempTextArea.value = textToCopy;
+            document.body.appendChild(tempTextArea);
+            tempTextArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempTextArea);
+
+            // Визуална обратна връзка върху бутона
+            const originalText = buttonElement.innerText;
+            buttonElement.innerText = 'Копирано! ✅';
+            buttonElement.classList.remove('bg-indigo-500', 'hover:bg-indigo-400');
+            buttonElement.classList.add('bg-emerald-600');
+
+            setTimeout(() => {
+                buttonElement.innerText = originalText;
+                buttonElement.classList.remove('bg-emerald-600');
+                buttonElement.classList.add('bg-indigo-500', 'hover:bg-indigo-400');
+            }, 2000);
+        }
+
+        // 2. Логика за Урок 2 (Демо кутия за цветове и нощен режим)
+        function setDemoL2Bg(color) {
+            const box = document.getElementById('demo-l2-box');
+            box.style.backgroundColor = color;
+            box.style.color = '#0f172a'; // Тъмен текст за четимост при светли цветове
+        }
+
+        function setDemoL2Theme(bgColor, textColor) {
+            const box = document.getElementById('demo-l2-box');
+            box.style.backgroundColor = bgColor;
+            box.style.color = textColor;
+        }
+
+        // 3. Логика за Урок 3 (Кликер и Хронометър)
+        let demoClicksCount = 0;
+        function demoAddClick() {
+            demoClicksCount = demoClicksCount + 1;
+            document.getElementById('demo-clicks').innerText = demoClicksCount;
+        }
+        function demoResetClick() {
+            demoClicksCount = 0;
+            document.getElementById('demo-clicks').innerText = 0;
+        }
+
+        let demoStartTimestamp = 0;
+        function demoStartTime() {
+            demoStartTimestamp = Date.now();
+            document.getElementById('demo-time').innerText = '...';
+            document.getElementById('demo-time-status').innerText = 'Броиш наум! ⏳';
+        }
+        function demoStopTime() {
+            if (demoStartTimestamp === 0) {
+                document.getElementById('demo-time-status').innerText = 'Първо натисни Старт!';
+                return;
+            }
+            const endTimestamp = Date.now();
+            const elapsedSeconds = ((endTimestamp - demoStartTimestamp) / 1000).toFixed(2);
+            document.getElementById('demo-time').innerText = elapsedSeconds;
+            demoStartTimestamp = 0;
+
+            const diff = Math.abs(3.0 - parseFloat(elapsedSeconds));
+            if (diff <= 0.15) {
+                document.getElementById('demo-time-status').innerText = 'Уау! Почти точно 3 секунди! 🏆';
+            } else {
+                document.getElementById('demo-time-status').innerText = 'Опитай пак за 3.00!';
+            }
+        }
+
+        // 4. Логика за Урок 4 (Симулатор на Екипен калкулатор)
+        function simCalculate() {
+            const val1 = Number(document.getElementById('sim-num1').value);
+            const val2 = Number(document.getElementById('sim-num2').value);
+            const sum = val1 + val2;
+            document.getElementById('sim-calc-result').innerText = sum;
+        }
+
+        // 5. Логика за Урок 5 (Зарче, Бонус точки и Случаен цвят)
+        function demoRollDice() {
+            const diceEl = document.getElementById('demo-dice-val');
+            const randomDice = Math.floor(Math.random() * 6) + 1;
+            diceEl.innerText = randomDice;
+            
+            // Малка анимация при хвърляне
+            diceEl.classList.remove('roll-anim');
+            void diceEl.offsetWidth; // Рестартиране на анимацията
+            diceEl.classList.add('roll-anim');
+        }
+
+        function demoBonusPoints() {
+            const bonus = Math.floor(Math.random() * 100) + 1;
+            document.getElementById('demo-bonus-val').innerText = bonus;
+        }
+
+        function demoRandomColor() {
+            const cvetove = ['#fbcfe8', '#bae6fd', '#bbf7d0', '#fed7aa', '#fef08a', '#e9d5ff'];
+            const r = Math.floor(Math.random() * cvetove.length);
+            document.getElementById('demo-l5-box').style.backgroundColor = cvetove[r];
+        }
+
+        // 6. Запазване на напредъка на ученика в localStorage
+        const checkboxes = document.querySelectorAll('.lesson-check');
+        
+        function updateProgress() {
+            let checkedCount = 0;
+            const savedState = {};
+
+            checkboxes.forEach(cb => {
+                const lessonId = cb.getAttribute('data-lesson');
+                savedState[lessonId] = cb.checked;
+                if (cb.checked) checkedCount++;
+            });
+
+            localStorage.setItem('html_js_5grade_progress', JSON.stringify(savedState));
+
+            const percentage = (checkedCount / checkboxes.length) * 100;
+            document.getElementById('progress-bar').style.width = percentage + '%';
+            document.getElementById('progress-text').innerText = `${checkedCount}/${checkboxes.length}`;
+        }
+
+        // Зареждане на запазения напредък при отваряне на страницата
+        window.addEventListener('DOMContentLoaded', () => {
+            try {
+                const saved = JSON.parse(localStorage.getItem('html_js_5grade_progress'));
+                if (saved) {
+                    checkboxes.forEach(cb => {
+                        const lessonId = cb.getAttribute('data-lesson');
+                        if (saved[lessonId]) {
+                            cb.checked = true;
+                        }
+                    });
+                }
+            } catch (e) {
+                console.error('Грешка при зареждане на напредъка:', e);
+            }
+            updateProgress();
+
+            checkboxes.forEach(cb => {
+                cb.addEventListener('change', updateProgress);
+            });
+        });
+    </script>
+</body>
+</html>
