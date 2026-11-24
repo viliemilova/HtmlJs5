@@ -55,19 +55,20 @@
                         <div class="w-24 sm:w-32 bg-black/25 rounded-full h-2.5 overflow-hidden">
                             <div id="progress-bar" class="bg-emerald-400 h-2.5 rounded-full transition-all duration-500" style="width: 0%"></div>
                         </div>
-                        <span id="progress-text" class="text-sm font-bold text-white">0/5</span>
+                        <span id="progress-text" class="text-sm font-bold text-white">0/6</span>
                     </div>
                 </div>
             </div>
 
             <!-- Бързи бутони за прескачане към уроците -->
-            <nav class="flex gap-2 overflow-x-auto no-scrollbar pt-3 mt-3 border-t border-white/15 text-xs sm:text-sm font-semibold">
-                <a href="#helper" class="shrink-0 bg-amber-400 text-slate-900 hover:bg-amber-300 px-3 py-1.5 rounded-xl transition shadow-sm">🛠️ Помощник</a>
-                <a href="#lesson1" class="shrink-0 bg-white/15 hover:bg-white/25 px-3 py-1.5 rounded-xl transition">1. HTML Основи</a>
-                <a href="#lesson2" class="shrink-0 bg-white/15 hover:bg-white/25 px-3 py-1.5 rounded-xl transition">2. Цветове и JS</a>
-                <a href="#lesson3" class="shrink-0 bg-white/15 hover:bg-white/25 px-3 py-1.5 rounded-xl transition">3. Променливи и Време</a>
-                <a href="#lesson4" class="shrink-0 bg-white/15 hover:bg-white/25 px-3 py-1.5 rounded-xl transition">4. Диалог и Калкулатор</a>
-                <a href="#lesson5" class="shrink-0 bg-white/15 hover:bg-white/25 px-3 py-1.5 rounded-xl transition">5. Случайни числа</a>
+            <nav class="flex flex-wrap items-center justify-center gap-2 pt-3 mt-3 border-t border-white/15 text-xs sm:text-sm font-semibold">
+                <a href="#helper" class="bg-amber-400 text-slate-900 hover:bg-amber-300 px-3 py-1.5 rounded-xl transition shadow-sm">🛠️ Помощник</a>
+                <a href="#lesson1" class="bg-white/15 hover:bg-white/25 px-3 py-1.5 rounded-xl transition">1. HTML Основи</a>
+                <a href="#lesson2" class="bg-white/15 hover:bg-white/25 px-3 py-1.5 rounded-xl transition">2. Цветове и JS</a>
+                <a href="#lesson3" class="bg-white/15 hover:bg-white/25 px-3 py-1.5 rounded-xl transition">3. Променливи и Време</a>
+                <a href="#lesson4" class="bg-white/15 hover:bg-white/25 px-3 py-1.5 rounded-xl transition">4. Диалог и Калкулатор</a>
+                <a href="#lesson5" class="bg-white/15 hover:bg-white/25 px-3 py-1.5 rounded-xl transition">5. Случайни числа</a>
+                <a href="#lesson6" class="bg-white/25 hover:bg-white/35 border border-white/30 px-3 py-1.5 rounded-xl transition">6. Интерактивност и Емоджита ✨</a>
             </nav>
         </div>
     </header>
@@ -533,6 +534,134 @@
             </div>
         </article>
 
+        <!-- ========================================================= -->
+        <!-- УРОК 6: ИНТЕРАКТИВНО ПРОГРАМИРАНЕ И ЕМОДЖИТА -->
+        <!-- ========================================================= -->
+        <article id="lesson6" class="bg-white rounded-3xl shadow-md border border-slate-200 overflow-hidden scroll-mt-32">
+            <div class="bg-purple-600 text-white px-6 py-4 flex flex-wrap items-center justify-between gap-4">
+                <div class="flex items-center gap-3">
+                    <span class="bg-white text-purple-600 font-black w-9 h-9 rounded-xl flex items-center justify-center text-lg shadow">6</span>
+                    <h2 class="text-xl sm:text-2xl font-extrabold">Интерактивно програмиране и Емоджита ✨</h2>
+                </div>
+                <label class="flex items-center gap-2 bg-purple-800/50 hover:bg-purple-800/70 px-3 py-1.5 rounded-xl cursor-pointer transition select-none">
+                    <input type="checkbox" class="lesson-check w-4 h-4 accent-emerald-400 rounded" data-lesson="6">
+                    <span class="text-sm font-bold">Научих този урок! ✅</span>
+                </label>
+            </div>
+
+            <div class="p-6 space-y-6">
+                <!-- Тайната на емоджитата -->
+                <div class="bg-purple-50 border border-purple-200 p-4 rounded-2xl grid grid-cols-1 md:grid-cols-2 gap-4 items-center">
+                    <div class="flex items-start gap-3">
+                        <span class="text-3xl">😍</span>
+                        <div class="text-sm text-purple-950">
+                            <p class="font-bold text-base mb-1">Как се слагат емоджита в Notepad?</p>
+                            <p>Натисни едновременно <kbd class="bg-white border border-purple-300 px-2 py-0.5 rounded font-bold text-purple-800 shadow-sm">Win + .</kbd> (бутона с прозорчето и точка). Избери картинка и тя влиза направо в кода!</p>
+                        </div>
+                    </div>
+                    <div class="bg-white p-3 rounded-xl border border-purple-200 text-xs sm:text-sm text-slate-700">
+                        <span class="font-bold text-rose-600">Важно:</span> В началото на файла в <code class="bg-slate-100 px-1 rounded">&lt;head&gt;</code> трябва да има <code class="bg-purple-100 text-purple-800 px-1.5 py-0.5 rounded font-bold">&lt;meta charset="UTF-8"&gt;</code>, за да не излизат маймуници!
+                    </div>
+                </div>
+
+                <!-- Обяснение на новите събития -->
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-sm">
+                    <div class="bg-purple-50/70 p-3 rounded-2xl border border-purple-100">
+                        <code class="text-purple-800 font-bold">&lt;input type="range"&gt;</code>
+                        <p class="text-slate-600 mt-1">Плъзгач (слайдер), с който местим числата плавно наляво и надясно.</p>
+                    </div>
+                    <div class="bg-purple-50/70 p-3 rounded-2xl border border-purple-100">
+                        <code class="text-purple-800 font-bold">oninput="..."</code>
+                        <p class="text-slate-600 mt-1">Изпълнява команда <b>веднага</b> докато пишеш или дърпаш плъзгача.</p>
+                    </div>
+                    <div class="bg-purple-50/70 p-3 rounded-2xl border border-purple-100">
+                        <code class="text-purple-800 font-bold">onmouseover="..."</code>
+                        <p class="text-slate-600 mt-1">Задейства се щом <b>минеш с мишката</b> върху бутона, дори без клик!</p>
+                    </div>
+                </div>
+
+                <!-- Код и Интерактивна площадка -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <!-- Код -->
+                    <div class="flex flex-col">
+                        <div class="flex items-center justify-between bg-slate-800 text-slate-200 px-4 py-2 rounded-t-2xl text-xs font-semibold">
+                            <span>📄 Код за Плъзгач, Огледало и Бягащ бутон</span>
+                            <button onclick="copyCode('code-l6', this)" class="bg-indigo-500 hover:bg-indigo-400 text-white px-3 py-1 rounded-lg transition font-bold">Копирай кода 📋</button>
+                        </div>
+                        <pre id="code-l6" class="bg-slate-900 text-emerald-300 p-4 rounded-b-2xl text-xs sm:text-sm overflow-x-auto flex-1 leading-relaxed">&lt;!-- 1. ПЛЪЗГАЧ ЗА РАЗМЕР НА РАКЕТА --&gt;
+&lt;p&gt;Размер: &lt;input type="range" min="20" max="80" value="32"
+  oninput="document.getElementById('raketa').style.fontSize = this.value + 'px';"&gt;&lt;/p&gt;
+&lt;div id="raketa" style="font-size: 32px;"&gt;🚀 Ракета&lt;/div&gt;
+
+&lt;!-- 2. ЖИВО ОГЛЕДАЛО ПРИ ПИСАНЕ --&gt;
+&lt;input type="text" placeholder="Пиши тук..."
+  oninput="document.getElementById('ogledalo').innerHTML = this.value;"&gt;
+&lt;h3 id="ogledalo" style="color: purple;"&gt;&lt;/h3&gt;
+
+&lt;!-- 3. БУТОН ПРИ ПОСОЧВАНЕ С МИШКАТА --&gt;
+&lt;p&gt;Докосвания: &lt;span id="dopir"&gt;0&lt;/span&gt;&lt;/p&gt;
+&lt;script&gt; let dopiri = 0; &lt;/script&gt;
+&lt;button onmouseover="
+  dopiri = dopiri + 1;
+  document.getElementById('dopir').innerHTML = dopiri;
+  let cvetove = ['gold', 'lightgreen', 'pink', 'skyblue', 'coral'];
+  let r = Math.floor(Math.random() * cvetove.length);
+  this.style.backgroundColor = cvetove[r];
+"&gt;Мини с мишката! 🐭&lt;/button&gt;</pre>
+                    </div>
+
+                    <!-- Интерактивно демо -->
+                    <div class="flex flex-col">
+                        <div class="bg-purple-100 text-purple-900 px-4 py-2 rounded-t-2xl text-xs font-bold flex items-center justify-between">
+                            <span>🕹️ Интерактивна площадка (Тествай тук!):</span>
+                            <span class="text-purple-700">На живо</span>
+                        </div>
+                        <div class="border-2 border-purple-100 rounded-b-2xl p-5 flex-1 bg-slate-50 space-y-4">
+                            
+                            <!-- Демо 1: Плъзгач -->
+                            <div class="bg-white p-3.5 rounded-2xl border border-slate-200 shadow-sm">
+                                <div class="flex items-center justify-between mb-1">
+                                    <span class="text-xs font-bold text-slate-700">1. Дръпни плъзгача (<code class="text-purple-600">range</code>):</span>
+                                    <span id="demo-range-px" class="text-xs font-bold text-purple-600">32px</span>
+                                </div>
+                                <input type="range" min="18" max="64" value="32" oninput="demoResizeRocket(this.value)" class="w-full accent-purple-600 cursor-pointer">
+                                <div class="mt-2 h-16 flex items-center justify-center bg-slate-50 rounded-xl border border-dashed border-slate-200 overflow-hidden">
+                                    <span id="demo-rocket" style="font-size: 32px;" class="transition-all duration-75 select-none">🚀 Ракета</span>
+                                </div>
+                            </div>
+
+                            <!-- Демо 2: Живо огледало -->
+                            <div class="bg-white p-3.5 rounded-2xl border border-slate-200 shadow-sm">
+                                <label class="block text-xs font-bold text-slate-700 mb-1.5">2. Живо огледало (<code class="text-purple-600">oninput</code>):</label>
+                                <input type="text" placeholder="Напиши името си или сложи емоджи..." oninput="document.getElementById('demo-mirror-out').innerText = this.value || 'Тук ще се появи текстът ти...'" class="w-full px-3 py-2 rounded-xl border border-slate-300 text-sm focus:outline-none focus:border-purple-500">
+                                <div id="demo-mirror-out" class="mt-2 text-lg font-extrabold text-purple-700 break-words min-h-[28px]">Тук ще се появи текстът ти...</div>
+                            </div>
+
+                            <!-- Демо 3: onmouseover бутон -->
+                            <div class="bg-white p-3.5 rounded-2xl border border-slate-200 shadow-sm flex flex-wrap items-center justify-between gap-3">
+                                <div>
+                                    <div class="text-xs font-bold text-slate-700">3. Не кликай, само мини отгоре!</div>
+                                    <p class="text-sm text-slate-600 mt-0.5">Докосвания: <strong id="demo-hover-count" class="text-xl text-purple-600">0</strong></p>
+                                </div>
+                                <button id="demo-hover-btn" onmouseover="demoHoverTouch(this)" onclick="demoHoverTouch(this)" class="bg-amber-200 text-slate-900 border border-slate-300 px-4 py-2.5 rounded-xl font-bold text-sm shadow-sm transition-colors duration-150 cursor-pointer">
+                                    Мини с мишката! 🐭
+                                </button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Екипно предизвикателство -->
+                <div class="bg-gradient-to-r from-purple-100 to-pink-100 border border-purple-200 rounded-2xl p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+                    <div class="text-sm text-slate-800">
+                        <span class="font-extrabold text-purple-900">👥 Предизвикателство за двойки (Шофьор и Навигатор):</span>
+                        Променете <code class="bg-white px-1.5 py-0.5 rounded font-bold text-purple-700">max="80"</code> на <code class="bg-white px-1.5 py-0.5 rounded font-bold text-purple-700">max="150"</code> в плъзгача, сменете ракетата с друго емоджи чрез <kbd class="bg-white px-1.5 py-0.5 rounded border border-slate-300 font-bold">Win + .</kbd> и разменете ролите!
+                    </div>
+                </div>
+            </div>
+        </article>
+
     </main>
 
     <!-- Футър -->
@@ -646,6 +775,21 @@
             const cvetove = ['#fbcfe8', '#bae6fd', '#bbf7d0', '#fed7aa', '#fef08a', '#e9d5ff'];
             const r = Math.floor(Math.random() * cvetove.length);
             document.getElementById('demo-l5-box').style.backgroundColor = cvetove[r];
+        }
+
+        // 5.1 Логика за Урок 6 (Плъзгач за размер и onmouseover бутон)
+        function demoResizeRocket(val) {
+            document.getElementById('demo-rocket').style.fontSize = val + 'px';
+            document.getElementById('demo-range-px').innerText = val + 'px';
+        }
+
+        let demoHoverTouches = 0;
+        function demoHoverTouch(btnElement) {
+            demoHoverTouches = demoHoverTouches + 1;
+            document.getElementById('demo-hover-count').innerText = demoHoverTouches;
+            const cvetove = ['#fde047', '#86efac', '#f9a8d4', '#7dd3fc', '#fda4af', '#d8b4fe'];
+            const r = Math.floor(Math.random() * cvetove.length);
+            btnElement.style.backgroundColor = cvetove[r];
         }
 
         // 6. Запазване на напредъка на ученика в localStorage
